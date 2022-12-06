@@ -108,12 +108,17 @@ local function CompareItems(lItem, rItem)
         return true;
     elseif lItem.id == nil then
         return false;
-    elseif lItem.quality ~= rItem.quality then
-        return (lItem.quality > rItem.quality);
+--    elseif lItem.quality ~= rItem.quality then
+--        return (lItem.quality > rItem.quality);
     elseif lItem.class ~= rItem.class then
         return (lItem.class < rItem.class);
     elseif lItem.subclass ~= rItem.subclass then
         return (lItem.subclass < rItem.subclass);
+-- [KAP] put ilvl and quality here, major sort on class/subclass to group similar items together
+    elseif lItem.itemLevel ~= rItem.itemLevel then
+        return (lItem.itemLevel < rItem.itemLevel);
+    elseif lItem.quality ~= rItem.quality then
+        return (lItem.quality > rItem.quality);
     elseif lItem.name ~= rItem.name then
         return (lItem.name < rItem.name);
     elseif lItem.count ~= rItem.count then
