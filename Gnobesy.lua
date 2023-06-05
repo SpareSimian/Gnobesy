@@ -236,10 +236,10 @@ local function AddItem(i, collection, tab)
     if item.id ~= nil then
         item.count = count;
         item.name, _, item.quality, _, _, item.class, item.subclass, _, item.type, _, item.price = GetItemInfo(item.id);
-        if item.id == 82800 then -- GetItemInfo returns a bogus name for caged pets
-            local speciesID, level, breedQuality, maxHealth, power, speed, name = scanTooltip:SetGuildBankItem(tab, i);
-            item.name = strjoin("#",name,level,breedQuality,maxHealth,power,speed);
-        end
+        -- if item.id == 82800 then -- GetItemInfo returns a bogus name for caged pets
+            -- local speciesID, level, breedQuality, maxHealth, power, speed, name = scanTooltip:SetGuildBankItem(tab, i);
+            -- item.name = strjoin("#",name,level,breedQuality,maxHealth,power,speed);
+        -- end
     end
     table.insert(collection, item);
 end
