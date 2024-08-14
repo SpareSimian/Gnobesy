@@ -404,7 +404,17 @@ function GNOBESY_MainFrame_OnEvent(self, event, arg)
         end
 
     elseif event == "VARIABLES_LOADED" then
-        InterfaceOptions_AddCategory(GNOBESY_OptionsPanel);
+      -- patch from curse comments for EasyMail to deal with new option system
+      -- InterfaceOptions_AddCategory(GNOBESY_OptionsPanel);
+      local GNOBESY_OptionsPanel = CreateFrame("Frame", "GNOBESY_OptionsPanel", UIParent)
+      GNOBESY_OptionsPanel.name = "GNOBESY"
+      -- Register the panel with the new Settings API
+      local category = Settings.RegisterCanvasLayoutCategory(GNOBESY_OptionsPanel, GNOBESY_OptionsPanel.name)
+      Settings.RegisterAddOnCategory(category)
+      -- Add widgets to the panel as desired
+      local title = GNOBESY_OptionsPanel:CreateFontString("ARTWORK", nil, "GameFontNormalLarge")
+      title:SetPoint("TOP")
+      title:SetText("GNOBESY")
     end
 end
 
